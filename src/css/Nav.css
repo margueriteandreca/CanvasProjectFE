@@ -1,0 +1,36 @@
+
+#nav-container {
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#nav-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 200px;
+}
+
+.nav-buttons > * {
+    border-style: none;
+}
+
+.nav-buttons > * {
+    border-style: none;
+}
+
+
+#draw-button {
+    background-color: white;
+    background-size: cover;
+    background-image: url("../icons/pencilstatic.jpg");
+    width: 50px;
+    height: 50px;
+}
+
+#draw-button:hover {
+    background-image: url("../icons/pencil.gif");
+}
