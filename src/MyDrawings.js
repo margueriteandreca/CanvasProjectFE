@@ -1,8 +1,12 @@
+import "./css/Drawings.css"
+
 function MyDrawings() {
 
     return (
     <div className="main-container">
-        <p>This is our saved drawingsss </p>
+        <div id="my-drawings-container">
+
+        </div>
     </div>
 
     )

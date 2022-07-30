@@ -5,7 +5,7 @@ function Home() {
 
     return (
     <div className="main-container">
-        <p>This is our home page </p>
+        <ReactSketchCanvas style={{width: "900px", height: "500px"}}/>
     </div>
 
     )
