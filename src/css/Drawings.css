@@ -10,6 +10,7 @@
 #my-drawings-container {
     background-color: white;
     display: flex;
+    flex-direction: column;
     width: 80vw;
     height: 80vh;
 }

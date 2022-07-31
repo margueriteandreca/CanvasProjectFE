@@ -3,7 +3,8 @@ import './css/App.css';
 import { BrowserRouter } from "react-router-dom";
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Home from './Home';
+import Canvas from './Canvas';
+import CreateCanvas from './CreateCanvas';
 import MyDrawings from './MyDrawings';
 import NavBar from './NavBar';
 import { CSSTransition, TransitionGroup } from "react-transition-group"
@@ -17,8 +18,9 @@ function App() {
     <>
         <NavBar />
         <Routes>
-        <Route exact path="/" element={<Home />}/>
-            <Route path="/mydrawings" element={<MyDrawings />}/>
+            <Route exact="true" path="/" element={<MyDrawings />}/>
+            <Route exact="true" path="/create" element={<CreateCanvas />}/>
+            <Route exact="true" path="/canvas/:canvasIdentifier" element={<Canvas />}/>
             <Route path="/*" element={<h1>You must be lost...</h1>}/>
         </Routes>
 
