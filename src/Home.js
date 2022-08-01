@@ -1,9 +1,10 @@
 import "./css/Home.css"
 import { ReactSketchCanvas } from 'react-sketch-canvas';
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
     useParams
 } from "react-router-dom";
+import ToolBar from "./ToolBar";
 
 const AUTO_UPDATE_TIMER_MS = 1000;
 
@@ -12,6 +13,10 @@ let lastTimestamp;
 let canvasPointsSet = new Set();
 
 function Canvas() {
+    const [strokeColor, setStrokeColor] = useState("black")
+    const [strokeWidth, setStrokeWidth] = useState(5)
+
+
     let { canvasIdentifier } = useParams();
 
     const canvasRef = useRef(null);
@@ -88,18 +93,24 @@ function Canvas() {
 
 
     return (
-        <div className="main-container">
-            <ReactSketchCanvas ref={canvasRef} style={{ width: "900px", height: "500px" }} onStroke={(data) => {
-                if (data.paths.length === 1) { // handles dot
-                    if (canvasPointsSet.has(data)) {
+        <div className="main-container" id="home-container">
+            <div id="canvas">
+                <ReactSketchCanvas ref={canvasRef} style={{ width: "900px", height: "500px" }} 
+                onStroke={(data) => {
+                    if (data.paths.length === 1) { // handles dot
+                        if (canvasPointsSet.has(data)) {
+                            getAllPathsAndSaveToServer(data);
+                        }
+                        canvasPointsSet.add(data)
+                    } else if (data.paths.length > 1) { // handles line
                         getAllPathsAndSaveToServer(data);
                     }
-                    canvasPointsSet.add(data)
-                } else if (data.paths.length > 1) { // handles line
-                    getAllPathsAndSaveToServer(data);
                 }
-            }
-            } />
+                } strokeColor={strokeColor} strokeWidth={strokeWidth}/>
+
+            </div>
+
+            <div><ToolBar strokeColor={strokeColor} setStrokeColor={setStrokeColor} strokeWidth={strokeWidth} setStrokeWidth={setStrokeWidth}/></div>
         </div>
 
     )

@@ -1,17 +1,24 @@
 
 #nav-container {
-    height: 50px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    position: absolute;
+    left: 0;
+    z-index: 50;
+    flex-direction: column;
+    height: 100vh;
+    background-color: white;
+    width: 70px;
 }
 
 #nav-buttons {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 200px;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 200px;
+    /* background-color: magenta; */
 }
 
 .nav-buttons > * {
@@ -46,3 +53,4 @@
 #pictures-button:hover {
     background-image: url("../icons/pictures.gif");
 }
+

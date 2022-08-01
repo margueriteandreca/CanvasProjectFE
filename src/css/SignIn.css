@@ -1,0 +1,25 @@
+#sign-in-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50%;
+    position: fixed;
+    height: 500px;
+    width: 500px;
+    background-color: whitesmoke;
+
+}
+
+#sign-in-container span {
+    font-size: smaller;
+
+}
+
+#sign-in-form input {
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+
+}
+
