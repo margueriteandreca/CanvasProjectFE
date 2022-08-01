@@ -5,6 +5,12 @@ import "./css/SignIn.css"
 
 
 function SignIn({isDisplayed, setIsDisplayed}) {
+    const [isSignIn, setIsSignIn] = useState(true)
+
+
+    const handleClick = () => {
+        setIsSignIn(false)
+    }
     
 
     return (
@@ -13,7 +19,7 @@ function SignIn({isDisplayed, setIsDisplayed}) {
             <input type="text" name="name" placeholder="email"/>
             <input type="text" name="name" placeholder="password"/>
             </form>
-            <span>Don't have an account? </span><span>Sign Up</span>
+            <span>Don't have an account? </span><span onClick={handleClick}>Sign Up</span>
             
         </div>
     )
