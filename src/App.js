@@ -20,13 +20,13 @@ function App() {
         <NavBar />
         <Routes>
             <Route exact="true" path="/" element={<Home />}/>
+            <Route exact="true" path="/canvas/:canvasIdentifier" element={<Home />}/>
             <Route exact="true" path="/mydrawings" element={<MyDrawings />}/>
             <Route path="/*" element={<h1>You must be lost...</h1>}/>
         </Routes>
 
     </div>
     );
-    // path="/canvas/:canvasIdentifier"
     
 }
 

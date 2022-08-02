@@ -1,6 +1,6 @@
-import "./css/Home.css"
-import paintBrushSmall from "./icons/paint-brush.png"
-import paintBrushLarge from "./icons/paintbrush.png"
+import "../css/Home.css"
+import paintBrushSmall from "../icons/paint-brush.png"
+import paintBrushLarge from "../icons/paintbrush.png"
 
 function ToolBar({strokeColor, setStrokeColor, strokeWidth, setStrokeWidth}) {
 
