@@ -2,7 +2,6 @@ import Home from "./icons/pencil.gif"
 import { NavLink } from "react-router-dom"
 import "./css/Nav.css"
 import "./css/SignIn.css"
-import SignIn from "./SignIn";
 import {useState} from "react";
 
 

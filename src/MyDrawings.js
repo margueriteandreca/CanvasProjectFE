@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import "./css/Drawings.css"
 import { NavLink } from "react-router-dom"
 
+
+
+//useContext
+
 function MyDrawings() {
     const [canvas, setCanvas] = useState([]);
 
@@ -31,7 +35,7 @@ function MyDrawings() {
                         </NavLink>);
                     })
                 }
-            </div>
+            </div> 
         </div>
 
     )
