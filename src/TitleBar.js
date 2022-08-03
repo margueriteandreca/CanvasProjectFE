@@ -13,7 +13,7 @@ function TitleBar() {
     return (
         <div id="title-div">
 
-            <h2 id="title">TITLE???
+            <h2 id="title" style={{color: "whitesmoke"}}>DrawTogether
             </h2>
             <button id="sign-in-button" onClick={handleSignInDisplayClick}>SIGN IN</button>
 

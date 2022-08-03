@@ -15,6 +15,7 @@ let canvasPointsSet = new Set();
 function CanvasComponent() {
     const [strokeColor, setStrokeColor] = useState("black")
     const [strokeWidth, setStrokeWidth] = useState(5)
+    const [eraser, setEraser] = useState(true)
 
 
     let { canvasIdentifier } = useParams(); //this will go to app.js => path="/canvas/:canvasIdentifier" and fetch the canvasIdentifier from the url
@@ -98,28 +99,42 @@ function CanvasComponent() {
     // when app loads, clear all the information. Download all the paths belonging to that canvas using fetchCanvas(). And start the timer to auto fetch again. 
 
 
+    const handleClearCanvas = () => {
+        canvasRef.current.clearCanvas() 
+    }
+
     return (
         <div id="canvas-and-tools">
             <div id="canvas">
                 <ReactSketchCanvas ref={canvasRef} style={{ width: "900px", height: "500px" }}
-                    onStroke={(data) => {
-                        if (data.paths.length === 1) { // handles dot
-                            if (canvasPointsSet.has(data)) {
+                        onStroke={(data) => {
+                            if (data.paths.length === 1) { // handles dot
+                                if (canvasPointsSet.has(data)) {
+                                    saveToServer([data]);
+                                }
+                                canvasPointsSet.add(data)
+                            } else if (data.paths.length > 1) { // handles line
                                 saveToServer([data]);
                             }
-                            canvasPointsSet.add(data)
-                        } else if (data.paths.length > 1) { // handles line
-                            saveToServer([data]);
                         }
-                    }
-                    } strokeColor={strokeColor} strokeWidth={strokeWidth} />
+                        } strokeColor={strokeColor} strokeWidth={strokeWidth} />
 
             </div>
+            
 
-            <div><ToolBar strokeColor={strokeColor} setStrokeColor={setStrokeColor} strokeWidth={strokeWidth} setStrokeWidth={setStrokeWidth} /></div>
+            <div id="tools-and-eraser">
+            <div>
+                <ToolBar strokeColor={strokeColor} setStrokeColor={setStrokeColor} strokeWidth={strokeWidth} setStrokeWidth={setStrokeWidth} eraser={eraser} setEraser={setEraser}/>
+            </div>
+            <div>
+                <button id="erase-button" onClick={handleClearCanvas}>Clear Canvas</button>
+            </div>
+            </div>
         </div>
     )
 
 }
+
+
 
 export default CanvasComponent; 

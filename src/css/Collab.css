@@ -368,6 +368,15 @@ a .uil {
 
 }
 
+
+#delete-collab {
+    color: whitesmoke;
+    background-color: transparent;
+    border-style: none;
+
+
+}
+
 #collaborator-whole {
     /* background-color: purple; */
     display: flex;
@@ -382,4 +391,48 @@ a .uil {
 
 .search-bar {
     width: 100%;
+    height: 100%;
+    padding: none !important;
+}
+
+.search-inputs input {
+    padding-left: 5px;
+    border-style: none;
+    border-radius: 2px;
+    height: 25px;
+    font-size: smaller;
+    letter-spacing: .7px;
+}
+
+#add-collab:hover, #delete-collab:hover {
+    color: rgb(110, 194, 194);
+    transition: .2s;
+    cursor: pointer;
+
+
+}
+
+
+#collab-name-user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: smaller;
+    background-color: transparent;
+}
+
+#collab-name-user p {
+    margin: 0px;
+    background-color: transparent;
+
+}
+
+#name {
+    font-weight: bold;
+
+}
+
+#username {
+    font-style: italic !important;
+
 }
