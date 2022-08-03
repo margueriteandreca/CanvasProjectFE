@@ -1,8 +1,5 @@
 
 
-/* Please ❤ this if you like it! */
-
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
 
 *,
@@ -131,9 +128,9 @@
   -ms-flex-pack: center;
   text-align: center;
   border: none;
-  background-color: #ffeba7;
+  background-color: rgb(38, 81, 255);
   cursor: pointer;
-  color: #102770;
+  color: whitesmoke;
   box-shadow: 0 12px 35px 0 rgba(255,235,167,.15);
 }
 .dark-light:checked ~ .sec-center .for-dropdown{
@@ -170,7 +167,7 @@
 .section-dropdown {
   position: absolute;
   padding: 5px;
-  background-color: #111;
+  background-color: rgb(97, 97, 97);
   top: 70px;
   left: 0;
   width: 100%;
@@ -210,7 +207,7 @@
   height: 0; 
   border-left: 8px solid transparent;
   border-right: 8px solid transparent; 
-  border-bottom: 8px solid #111;
+  border-bottom: 8px solid white;
   content: '';
   display: block;
   z-index: 2;
@@ -250,10 +247,10 @@ a {
   color: #102770;
   background-color: #ffeba7;
 } */
-/* .dark-light:checked ~ .sec-center .section-dropdown a:hover {
+.dark-light:checked ~ .sec-center .section-dropdown a:hover {
   color: #ffeba7;
   background-color: #102770;
-} */
+}
 a .uil {
   font-size: 22px;
 }
@@ -292,18 +289,18 @@ a .uil {
   transform: rotate(135deg);
   transition: transform 200ms linear;
 }
-/* .dropdown-sub:checked + label:hover,
+.dropdown-sub:checked + label:hover,
 .dropdown-sub:not(:checked) + label:hover{
   color: #102770;
   background-color: #ffeba7;
-} */
+}
 .dark-light:checked ~ .sec-center .section-dropdown .for-dropdown-sub{
   color: #102770;
 }
-/* .dark-light:checked ~ .sec-center .section-dropdown .for-dropdown-sub:hover{
+.dark-light:checked ~ .sec-center .section-dropdown .for-dropdown-sub:hover{
   color: #ffeba7;
   background-color: #102770;
-} */
+}
 
 .section-dropdown-sub {
   position: relative;
@@ -312,7 +309,7 @@ a .uil {
   pointer-events: none;
   opacity: 0;
   max-height: 0;
-  padding-left: 10px;
+  /* padding-left: 10px; */
   padding-right: 3px;
   overflow: hidden;
   transition: all 200ms linear;
@@ -362,4 +359,27 @@ a .uil {
   top: 20px;
   right: 20px;
 }
+}
+
+#add-collab {
+    color: whitesmoke;
+    background-color: transparent;
+    border-style: none;
+
+}
+
+#collaborator-whole {
+    /* background-color: purple; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+/* 
+#collaborator-whole > * {
+    color: #000;
+} */
+
+
+.search-bar {
+    width: 100%;
 }

@@ -24,7 +24,7 @@ function SignInOrUp({isDisplayed, setIsDisplayed}) {
     return (
         <div id="sign-in-container">
             <button id="close-button" onClick={handleClickClose}>x</button>
-            {isSignIn ? <SignIn handleClickSignUp={handleClickSignUp}/> : <SignUp />}
+            {isSignIn ? <SignIn handleClickSignUp={handleClickSignUp}/> : <SignUp isSignIn={isSignIn} setIsSignIn={setIsSignIn}/>}
             
             
         </div>

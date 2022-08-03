@@ -1,7 +1,7 @@
 import "./css/SignIn.css";
 import { useState } from "react";
 
-function SignUp() {
+function SignUp({isSignIn, setIsSignIn}) {
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [username, setUsername] = useState("")
@@ -17,13 +17,13 @@ function SignUp() {
 
 
 
-
     const submitSignUp = (e) => {
         e.preventDefault();
 
         const newUser = {
             first_name: firstName,
             last_name: lastName,
+            username: username,
             email: email,
             password: password
         }
@@ -36,7 +36,12 @@ function SignUp() {
             body: JSON.stringify(newUser)
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data)
+            setIsSignIn(true)
+        })
+
+
     }
 
 
