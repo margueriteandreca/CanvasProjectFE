@@ -3,6 +3,10 @@ import "./css/Drawings.css"
 import { NavLink } from "react-router-dom"
 import { ReactSketchCanvas } from 'react-sketch-canvas';
 
+
+
+//useContext
+
 function MyDrawings() {
     const [canvas, setCanvas] = useState([]);
     const [canvasImages, setCanvasImages] = useState([]);
@@ -82,7 +86,7 @@ function MyDrawings() {
                         </Fragment>);
                     })
                 }
-            </div>
+            </div> 
         </div>
 
     )

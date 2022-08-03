@@ -99,7 +99,7 @@ function CanvasComponent() {
 
 
     return (
-        <>
+        <div id="canvas-and-tools">
             <div id="canvas">
                 <ReactSketchCanvas ref={canvasRef} style={{ width: "900px", height: "500px" }}
                     onStroke={(data) => {
@@ -117,7 +117,7 @@ function CanvasComponent() {
             </div>
 
             <div><ToolBar strokeColor={strokeColor} setStrokeColor={setStrokeColor} strokeWidth={strokeWidth} setStrokeWidth={setStrokeWidth} /></div>
-        </>
+        </div>
     )
 
 }

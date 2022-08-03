@@ -5,9 +5,10 @@
     align-items: center;
     margin-top: 50%;
     position: fixed;
-    height: 500px;
-    width: 500px;
-    background-color: whitesmoke;
+    height: 350px;
+    width: 300px;
+    background-color: white;
+    box-shadow: rgba(149, 157, 165, 0.4) 0px 15px 30px;
 
 }
 
@@ -16,10 +17,135 @@
 
 }
 
+.inner-sign-in {
+    height: 300px;
+    width: 200px;
+    /* background-color: rgb(177, 177, 249); */
+}
+
+.sign-in-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#sign-in-form > * {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
 #sign-in-form input {
+    background-color: whitesmoke;
     border-radius: 5px;
+    border-color: #7c8287;
+    border-style: solid;
     width: 150px;
     height: 30px;
+}
+
+
+#sign-up-form > * {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+/* 
+#sign-in-submit {
+    position: absolute;
+    right: 20px
+
+} */
+
+
+#sign-in-submit {
+  appearance: none;
+  background-color: rgb(182, 240, 240) !important;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+#sign-in-submit:hover {
+  background-color: #FAFBFC !important;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+#sign-in-submit:disabled {
+  background-color: #FAFBFC;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959DA5;
+  cursor: default;
+}
+
+#sign-in-submit:active {
+  background-color: #FAFBFC;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+#sign-in-submit:focus {
+  outline: 1px transparent;
+}
+
+/* #sign-in-submit:before {
+  display: none;
+}
+
+#sign-in-submit:-webkit-details-marker {
+  display: none;
+} */
+
+
+#sign-up-form input {
+    background-color: whitesmoke;
+    border-radius: 5px;
+    border-color: #7c8287;
+    border-style: solid;
+    width: 150px;
+    height: 30px;
+}
+
+#sign-up-span:hover {
+    color: rgb(110, 194, 194);
+    transition: .2s;
+    cursor: pointer;
+
 
 }
 
+
+#close-button {
+    justify-self: flex-start;
+    align-self: flex-end;
+    border-style: none;
+    background-color: transparent;
+    margin-right: 10px;
+}
+
+#close-button:hover {
+    color:aquamarine;
+    transition: .2s;
+    cursor: pointer;
+}

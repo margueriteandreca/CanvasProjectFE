@@ -1,6 +1,6 @@
 import {useState} from "react"
 import "./css/Title.css"
-import SignIn from "./SignIn"
+import SignInOrUp from "./SignInOrUp"
 
 function TitleBar() {
     const [isDisplayed, setIsDisplayed] = useState(false)
@@ -17,7 +17,7 @@ function TitleBar() {
             </h2>
             <button id="sign-in-button" onClick={handleSignInDisplayClick}>SIGN IN</button>
 
-        {isDisplayed ? <SignIn /> : null}   
+        {isDisplayed ? <SignInOrUp isDisplayed={isDisplayed} setIsDisplayed={setIsDisplayed}/> : null}   
             
 
         </div>
