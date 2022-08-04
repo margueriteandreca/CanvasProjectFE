@@ -4,16 +4,12 @@ import { NavLink } from "react-router-dom"
 import { ReactSketchCanvas } from 'react-sketch-canvas';
 import { useCookies } from 'react-cookie';
 
-
-
-//useContext
-
 function MyDrawings() {
     const [canvas, setCanvas] = useState([]);
     const [canvasImages, setCanvasImages] = useState([]);
     const canvasesRef = useRef([]);
 
-    const [cookies, setCookie] = useCookies(['name']);
+    const [cookies, setCookie] = useCookies(['apiToken', 'userId', 'firstName', 'lastName', 'loginToggle']);
 
     useEffect(() => {
         fetch('http://localhost:9292/all_canvas_boards', {
@@ -22,16 +18,28 @@ function MyDrawings() {
             },
             method: "POST",
             body: JSON.stringify({
-                api_token: 'abcsam', // all you need to do this change this api-token base on which user you select. Either from session or Cookies
+                api_token: cookies.apiToken
             })
         })
             .then((response) => response.json())
             .then((json) => {
                 if (json.success) {
-                    setCanvas(json.data);
+                    const set = new Set();
+                    
+                    // dedupping duplicated canvas
+                    setCanvas(json.data.filter((board) => {
+                        if (set.has(board.id)) {
+                            return false;
+                        } else {
+                            set.add(board.id);
+                            return true;
+                        }
+                    }));
+                } else {
+                    setCanvas([]);
                 }
             });
-    }, []);
+    }, [cookies.apiToken, cookies.loginToggle]);
 
     useEffect(() => {
         canvasesRef.current = canvasesRef.current.slice(0, canvas.length);
@@ -88,9 +96,6 @@ function MyDrawings() {
                             <NavLink exact="true" to={`/canvas/${item.identifier}`} className="nav-buttons">
                                 <button>{item.canvas_name}</button>
                             </NavLink>
-                            {cookies.name && <h1>Hello {cookies.name}!</h1>}
-
-                            <button onClick={(event) => { setCookie('name', 'abc', { path: '/' }) }}>Cookies</button>
                         </Fragment>);
                     })
                 }

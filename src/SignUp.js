@@ -1,13 +1,15 @@
 import "./css/SignIn.css";
 import { useState } from "react";
+import { useCookies } from 'react-cookie';
 
-function SignUp({isSignIn, setIsSignIn}) {
+function SignUp({ isSignIn, setIsSignIn }) {
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
+    const [cookies, setCookie] = useCookies(['apiToken', 'userId', 'firstName', 'lastName']);
 
     const handleFirstName = (e) => setFirstName(e.target.value)
     const handleLastName = (e) => setLastName(e.target.value)
@@ -35,16 +37,13 @@ function SignUp({isSignIn, setIsSignIn}) {
             method: "POST",
             body: JSON.stringify(newUser)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            setIsSignIn(true)
-        })
-
-
+            .then(res => res.json())
+            .then(jsonResponse => {
+                if (jsonResponse.success) {
+                    setIsSignIn(true)
+                }
+            })
     }
-
-
 
     return (
         <div className="inner-sign-in">
@@ -54,7 +53,7 @@ function SignUp({isSignIn, setIsSignIn}) {
                 <input type="text" name="name" placeholder="Last Name" onChange={handleLastName} value={lastName} />
                 <input type="text" name="name" placeholder="username" onChange={handleUsername} value={username} />
                 <input type="text" name="name" placeholder="email" onChange={handleEmail} value={email} />
-                <input type="text" name="name" placeholder="password" onChange={handlePassword} value={password} />
+                <input type="password" name="name" placeholder="password" onChange={handlePassword} value={password} />
                 <input type="submit" name="signin" id="sign-in-submit" value="SIGN UP" />
             </form>
 

@@ -3,6 +3,7 @@ import "./css/Collab.css"
 import CollaboratorItem from "./CollaboratorItem";
 import SearchCollab from "./SearchCollab";
 import { useState, useEffect } from "react";
+import { useCookies } from 'react-cookie';
 
 // const testArray = [
 //     {
@@ -27,7 +28,8 @@ import { useState, useEffect } from "react";
 
 function Collaborators() {
     const [collaborators, setCollaborators] = useState([])
-
+    const [cookies, setCookie] = useCookies(['apiToken', 'userId', 'firstName', 'lastName', 'loginToggle']);
+    
     useEffect(() => {
         fetch("http://localhost:9292/canvasboards/2")
             .then(res => res.json())
@@ -41,7 +43,7 @@ function Collaborators() {
     console.log(collaborators)
 
     function handleClick(newCollaborator) {
-        fetch(`http://localhost:9292/user/:id/collaborators`,
+        fetch(`http://localhost:9292/user/${cookies.userId}/collaborators`,
             {
                 headers: {
                     'Accept': 'application/json',

@@ -5,6 +5,7 @@ import {
     useParams
 } from "react-router-dom";
 import ToolBar from "./ToolBar";
+import { useCookies } from 'react-cookie';
 
 const AUTO_UPDATE_TIMER_MS = 1000;
 
@@ -16,7 +17,7 @@ function CanvasComponent() {
     const [strokeColor, setStrokeColor] = useState("black")
     const [strokeWidth, setStrokeWidth] = useState(5)
     const [eraser, setEraser] = useState(true)
-
+    const [cookies, setCookie] = useCookies(['apiToken', 'userId', 'firstName', 'lastName', 'loginToggle']);
 
     let { canvasIdentifier } = useParams(); //this will go to app.js => path="/canvas/:canvasIdentifier" and fetch the canvasIdentifier from the url
 
@@ -29,7 +30,7 @@ function CanvasComponent() {
             return;
         }
         const param = {
-            api_token: 'abcsam', // you should get the api token from login 
+            api_token: cookies.apiToken,
             canvasboard_identifier: canvasIdentifier //put the generated hash here.
         };
         if (lastTimestamp) {
@@ -62,7 +63,7 @@ function CanvasComponent() {
         fetch('http://localhost:9292/add_paths', {
             method: 'POST',
             body: JSON.stringify({
-                api_token: 'abcsam',
+                api_token: cookies.apiToken,
                 canvasboard_identifier: canvasIdentifier,
                 canvas_paths: toSendToServer
             }),
