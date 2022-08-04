@@ -24,13 +24,14 @@ function TitleBar() {
     return (
         <div id="title-div">
 
-            <h2 id="title" style={{ color: "whitesmoke" }}>DrawTogether
-            </h2>
+            <h2 id="title" style={{ color: "whitesmoke" }}>DrawTogether</h2>
             {cookies.apiToken
-                ? <button id="sign-in-button" onClick={handleLogout}>Logout</button>
-                : <button id="sign-in-button" onClick={handleSignInDisplayClick}>SIGN IN</button>}
-
+                ? <button id="sign-in-button" onClick={handleLogout}>Sign Out</button>
+                : <button id="sign-in-button" onClick={handleSignInDisplayClick}>Sign In</button>}
             {isDisplayed ? <SignInOrUp isDisplayed={isDisplayed} setIsDisplayed={setIsDisplayed} /> : null}
+            <div>
+            {cookies.apiToken? `Welcome back ${cookies.lastName} ${cookies.firstName}`: null}
+            </div>
 
 
         </div>
