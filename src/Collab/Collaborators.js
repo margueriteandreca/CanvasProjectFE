@@ -36,7 +36,6 @@ function Collaborators() {
             console.log(data)
         })
     }
-    // testArray.map(item => <CollaboratorItem key= {item.id} name={item.name} username={item.username}/>)
 
     return (
         <div id="collab-div">

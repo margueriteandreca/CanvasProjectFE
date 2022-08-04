@@ -21,7 +21,7 @@ function SignInOrUp({isDisplayed, setIsDisplayed}) {
 
     return (
         <div id="sign-in-container">
-            <button id="close-button" onClick={handleClickClose}>x</button>
+            <button id="close-button" onClick={handleClickClose}>✕</button>
             {isSignIn ? <SignIn handleClickSignUp={handleClickSignUp}/> : <SignUp isSignIn={isSignIn} setIsSignIn={setIsSignIn}/>}
             
             
@@ -31,3 +31,4 @@ function SignInOrUp({isDisplayed, setIsDisplayed}) {
 }
 
 export default SignInOrUp;
+

@@ -8,6 +8,12 @@ function CollaboratorItem({collaborator, handleClick}) {
     }
 }
 
+    function handleDelete () {
+        fetch(`/canvasboards/${identifier}/users/${collaborator.id}`, { method: 'DELETE' })
+        .then(res => res.json())
+        .then(data => console.log("DELTED ITEM:", data))
+    }
+
 console.log(collaborator)
 
 console.log(collaborator.first_name, collaborator.username)
@@ -20,7 +26,7 @@ console.log(collaborator.first_name, collaborator.username)
 
             {handleClick ? 
                 <button id="add-collab" className="collab-buttons" onClick={handleClickCollab}>Add</button>
-                : <button id="delete-collab">✕</button>}
+                : <button id="delete-collab" onClick={handleDelete}>✕</button>}
 
         </div>         
     )

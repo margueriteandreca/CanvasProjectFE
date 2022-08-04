@@ -64,12 +64,12 @@
 
 #sign-in-submit {
   appearance: none;
-  background-color: rgb(182, 240, 240) !important;
+  background-color: rgb(176, 230, 134) !important;
   border: 1px solid rgba(27, 31, 35, 0.15);
   border-radius: 6px;
   box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
   box-sizing: border-box;
-  color: #24292E;
+  color: rgb(70, 68, 68);
   cursor: pointer;
   font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   font-size: 14px;
