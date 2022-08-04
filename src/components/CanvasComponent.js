@@ -5,7 +5,13 @@ import {
     useParams
 } from "react-router-dom";
 import ToolBar from "./ToolBar";
+<<<<<<< HEAD
 import { SketchPicker } from 'react-color';
+=======
+import { useCookies } from 'react-cookie';
+import { useNavigate } from "react-router-dom";
+
+>>>>>>> 57cd58153c16b8367f006fb5847c64c2b0a61afb
 
 const AUTO_UPDATE_TIMER_MS = 1000;
 
@@ -14,19 +20,60 @@ let lastTimestamp;
 let canvasPointsSet = new Set();
 
 function CanvasComponent() {
+    const [disableCanvas, setDisableCanvas] = useState(false)
     const [strokeColor, setStrokeColor] = useState("black")
     const [strokeWidth, setStrokeWidth] = useState(5)
+<<<<<<< HEAD
     const [eraser, setEraser] = useState(false)
     const [isPickerDisplayed, setIsPickerDisplayed] = useState(false)
 
+=======
+    const [canvasName, setCanvasName] = useState('new canvas'); // TODO: have a way to update canvasName
+    const [eraser, setEraser] = useState(true)
+    const [cookies, setCookie] = useCookies(['apiToken', 'userId', 'firstName', 'lastName', 'loginToggle']);
+>>>>>>> 57cd58153c16b8367f006fb5847c64c2b0a61afb
 
     let { canvasIdentifier } = useParams(); //this will go to app.js => path="/canvas/:canvasIdentifier" and fetch the canvasIdentifier from the url
 
     const canvasRef = useRef(null); // keep track of the reference to canvas, initially it is null cuz no canvas yet. A new Canvas will auto set the canvasRef because you are setting the ref attribute to canvasRef
 
+<<<<<<< HEAD
     useEffect(() => {
         canvasRef.current.eraseMode(eraser);
     }, [eraser])
+=======
+    let navigate = useNavigate();
+
+    const createBoardAndRedirect = async () => {
+        const canvasPath = await canvasRef.current.exportPaths();
+        if (canvasPath?.length === 0) {
+            return;
+        }
+        const createCanvasResponse = await fetch('http://localhost:9292/create_canvas', {
+            method: 'POST',
+            body: JSON.stringify({
+                api_token: cookies.apiToken,
+                canvas_name: canvasName
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        });
+        const createCanvasResponseJson = await createCanvasResponse.json();
+        const canvasId = createCanvasResponseJson.data.identifier;
+
+        saveToServer(canvasPath, canvasId, () => {
+            navigate(`/canvas/${canvasId}`, { replace: true });
+        })
+    }
+
+    useEffect(() => {
+        if (cookies.apiToken && !canvasIdentifier) {
+            createBoardAndRedirect()
+        }
+        setDisableCanvas(!cookies.apiToken)
+    }, [cookies.apiToken]);
+>>>>>>> 57cd58153c16b8367f006fb5847c64c2b0a61afb
 
     const fetchCanvas = () => {
         // this function is to fetch the canvas board
@@ -35,7 +82,7 @@ function CanvasComponent() {
             return;
         }
         const param = {
-            api_token: 'abcsam', // you should get the api token from login 
+            api_token: cookies.apiToken,
             canvasboard_identifier: canvasIdentifier //put the generated hash here.
         };
         if (lastTimestamp) {
@@ -57,8 +104,12 @@ function CanvasComponent() {
             }); //gets the canvas path information from the server and set it to canvasboard
     }
 
-    const saveToServer = (toSendToServer = []) => {
-        if (!canvasIdentifier) {
+    const saveToServer = (toSendToServer = [], canvasIdentifierOverride, onComplete) => {
+        const identifier = canvasIdentifierOverride || canvasIdentifier;
+        if (!identifier) {
+            if (cookies.apiToken && toSendToServer.length > 0) {
+                createBoardAndRedirect();
+            }
             return;
         }
         if (toSendToServer.length === 0) {
@@ -68,8 +119,8 @@ function CanvasComponent() {
         fetch('http://localhost:9292/add_paths', {
             method: 'POST',
             body: JSON.stringify({
-                api_token: 'abcsam',
-                canvasboard_identifier: canvasIdentifier,
+                api_token: cookies.apiToken,
+                canvasboard_identifier: identifier,
                 canvas_paths: toSendToServer
             }),
             headers: {
@@ -78,8 +129,8 @@ function CanvasComponent() {
         })
             .then((response) => response.json())
             .then((json) => {
-                if (!json.success) {
-                    console.log(json)
+                if (onComplete) {
+                    onComplete();
                 }
             });
     }
@@ -106,7 +157,7 @@ function CanvasComponent() {
 
 
     const handleClearCanvas = () => {
-        canvasRef.current.clearCanvas() 
+        canvasRef.current.clearCanvas()
     }
 
     const handleUpdateColor = (color) => {
@@ -120,24 +171,25 @@ function CanvasComponent() {
     return (
         <div id="canvas-and-tools">
             <div id="canvas">
-                <ReactSketchCanvas ref={canvasRef} style={{ width: "900px", height: "500px" }}
-                        onStroke={(data) => {
-                            if (data.paths.length === 1) { // handles dot
-                                if (canvasPointsSet.has(data)) {
-                                    saveToServer([data]);
-                                }
-                                canvasPointsSet.add(data)
-                            } else if (data.paths.length > 1) { // handles line
+                <ReactSketchCanvas ref={canvasRef} style={{ width: "900px", height: "500px", pointerEvents: disableCanvas ? "none": '' }}
+                    onStroke={(data) => {
+                        if (data.paths.length === 1) { // handles dot
+                            if (canvasPointsSet.has(data)) {
                                 saveToServer([data]);
                             }
+                            canvasPointsSet.add(data)
+                        } else if (data.paths.length > 1) { // handles line
+                            saveToServer([data]);
                         }
-                        } strokeColor={strokeColor} strokeWidth={strokeWidth} />
+                    }
+                    } strokeColor={strokeColor} strokeWidth={strokeWidth} />
 
 
             </div>
-            
+
 
             <div id="tools-and-eraser">
+<<<<<<< HEAD
             <div>
                 <ToolBar strokeColor={strokeColor} setStrokeColor={setStrokeColor} strokeWidth={strokeWidth} setStrokeWidth={setStrokeWidth} eraser={eraser} setEraser={setEraser} handlePickerDisplay={handlePickerDisplay}/>
                 {isPickerDisplayed ? <div id="sketch-picker"><SketchPicker color={strokeColor} onChange={handleUpdateColor} /></div>: null}
@@ -145,12 +197,18 @@ function CanvasComponent() {
             <div>
                 <button id="erase-button" onClick={handleClearCanvas}>Clear Canvas</button>
             </div>
+=======
+                <div>
+                    <ToolBar strokeColor={strokeColor} setStrokeColor={setStrokeColor} strokeWidth={strokeWidth} setStrokeWidth={setStrokeWidth} eraser={eraser} setEraser={setEraser} />
+                </div>
+                <div>
+                    <button id="erase-button" onClick={handleClearCanvas}>Clear Canvas</button>
+                </div>
+>>>>>>> 57cd58153c16b8367f006fb5847c64c2b0a61afb
             </div>
         </div>
     )
 
 }
-
-
 
 export default CanvasComponent; 

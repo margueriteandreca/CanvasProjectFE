@@ -21,7 +21,7 @@ console.log(collaborator.first_name, collaborator.username)
     return (
         <div id="collaborator-whole">
             <div id="collab-name-user">
-                <a href="#"><p id="name">{collaborator.first_name}</p> <p id="username">{collaborator.username}</p><i class="uil uil-arrow-right"></i></a>
+                <a href="#"><p id="name">{collaborator.first_name}</p> <p id="username">{collaborator.username}</p><i className="uil uil-arrow-right"></i></a>
             </div>
 
             {handleClick ? 

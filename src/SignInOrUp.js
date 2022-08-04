@@ -6,7 +6,7 @@ import "./css/SignIn.css"
 
 
 
-function SignInOrUp({isDisplayed, setIsDisplayed}) {
+function SignInOrUp({ isDisplayed, setIsDisplayed }) {
     const [isSignIn, setIsSignIn] = useState(true)
 
 
@@ -17,14 +17,17 @@ function SignInOrUp({isDisplayed, setIsDisplayed}) {
     const handleClickClose = () => {
         setIsDisplayed(false)
     }
-    
+
 
     return (
         <div id="sign-in-container">
+
             <button id="close-button" onClick={handleClickClose}>✕</button>
-            {isSignIn ? <SignIn handleClickSignUp={handleClickSignUp}/> : <SignUp isSignIn={isSignIn} setIsSignIn={setIsSignIn}/>}
-            
-            
+            {isSignIn
+                ? <SignIn handleClickSignUp={handleClickSignUp} onComplete={handleClickClose} />
+                : <SignUp isSignIn={isSignIn} setIsSignIn={setIsSignIn} />}
+
+
         </div>
     )
 

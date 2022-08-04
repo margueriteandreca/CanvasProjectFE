@@ -1,6 +1,6 @@
 
 import CollaboratorItem from "./CollaboratorItem"
-import {useState} from "react"
+import { useState } from "react"
 import "../css/Collab.css";
 
 // const collaborators = [
@@ -15,21 +15,21 @@ import "../css/Collab.css";
 // }
 // ]
 
-function SearchCollab({collaborators, handleClick}) {
+function SearchCollab({ collaborators, handleClick }) {
     console.log(collaborators)
 
     const [search, setSearch] = useState("")
 
-    const filteredCollaborators = collaborators.filter(collab => collab.first_name.toLowerCase().includes(search.toLowerCase())).slice(0, 5)
+    const filteredCollaborators = collaborators.filter(collab => collab.first_name ? collab.first_name.toLowerCase().includes(search.toLowerCase()) : false).slice(0, 5)
 
     // console.log(filteredCollaborators)
 
     const dropDown = filteredCollaborators.map(collab => {
         return (
-            <CollaboratorItem key = {collab.id} collaborator={collab} handleClick={handleClick}/>
+            <CollaboratorItem key={collab.id} collaborator={collab} handleClick={handleClick} />
         )
     })
-    
+
     function handleOnChange(e) {
         setSearch(e.target.value)
     }
@@ -38,7 +38,7 @@ function SearchCollab({collaborators, handleClick}) {
         <form className="search-bar">
             <div>
                 <div className="search-inputs">
-                    <input type="text" id="search" placeholder="add a friend" value={search} onChange={handleOnChange}/>
+                    <input type="text" id="search" placeholder="add a friend" value={search} onChange={handleOnChange} />
                 </div>
                 <div className="dropdown-results">
                     {search === "" ? null : dropDown}
