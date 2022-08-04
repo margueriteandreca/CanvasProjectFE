@@ -55,7 +55,7 @@ function ToolBar({strokeColor, setStrokeColor, strokeWidth, setStrokeWidth, eras
                 <img src={paintBrushLarge} className="brush-buttons" onClick={handleClickThick}></img>
                 <img src={Eraser} className="brush-buttons" onClick={handleClickEraser}></img>
             </div>
-            <div class="vl"></div>
+            <div className="vl"></div>
             <div id="colors">
                 <button className="color-buttons" style={{backgroundColor: "black"}} onClick={handleClickBlack}></button>
                 <button className="color-buttons" style={{backgroundColor: "red"}} onClick={handleClickRed}></button>
