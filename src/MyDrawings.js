@@ -16,12 +16,14 @@ function MyDrawings() {
     const [cookies, setCookie] = useCookies(['name']);
 
     useEffect(() => {
-        fetch('http://localhost:9292/all_canvas_boards?' + new URLSearchParams({
-            api_token: 'abcsam', // all you need to do this change this api-token base on which user you select. Either from session or Cookies
-        }), {
+        fetch('http://localhost:9292/all_canvas_boards', {
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
             },
+            method: "POST",
+            body: JSON.stringify({
+                api_token: 'abcsam', // all you need to do this change this api-token base on which user you select. Either from session or Cookies
+            })
         })
             .then((response) => response.json())
             .then((json) => {
@@ -88,11 +90,11 @@ function MyDrawings() {
                             </NavLink>
                             {cookies.name && <h1>Hello {cookies.name}!</h1>}
 
-                            <button onClick={(event) => { setCookie('name', 'abc', { path:'/' })}}>Cookies</button>
+                            <button onClick={(event) => { setCookie('name', 'abc', { path: '/' }) }}>Cookies</button>
                         </Fragment>);
                     })
                 }
-        </div> 
+            </div>
         </div >
 
     )
