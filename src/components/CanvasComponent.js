@@ -189,7 +189,6 @@ function CanvasComponent() {
 
 
             <div id="tools-and-eraser">
-<<<<<<< HEAD
             <div>
                 <ToolBar strokeColor={strokeColor} setStrokeColor={setStrokeColor} strokeWidth={strokeWidth} setStrokeWidth={setStrokeWidth} eraser={eraser} setEraser={setEraser} handlePickerDisplay={handlePickerDisplay}/>
                 {isPickerDisplayed ? <div id="sketch-picker"><SketchPicker color={strokeColor} onChange={handleUpdateColor} /></div>: null}
@@ -197,14 +196,6 @@ function CanvasComponent() {
             <div>
                 <button id="erase-button" onClick={handleClearCanvas}>Clear Canvas</button>
             </div>
-=======
-                <div>
-                    <ToolBar strokeColor={strokeColor} setStrokeColor={setStrokeColor} strokeWidth={strokeWidth} setStrokeWidth={setStrokeWidth} eraser={eraser} setEraser={setEraser} />
-                </div>
-                <div>
-                    <button id="erase-button" onClick={handleClearCanvas}>Clear Canvas</button>
-                </div>
->>>>>>> 57cd58153c16b8367f006fb5847c64c2b0a61afb
             </div>
         </div>
     )
