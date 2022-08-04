@@ -15,9 +15,9 @@
 
 .color-buttons:hover {
     box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.2);
+    cursor: pointer;
 
 }
-
 
 #collab-div {
     display: flex;
@@ -30,4 +30,9 @@
     background-color: blueviolet;
 }
 
+.vl {
+    border-left: 1px solid rgb(138, 138, 138);
+    height: 40px;
+    align-self: center;
+  }
  
