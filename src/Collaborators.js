@@ -36,11 +36,17 @@ function Collaborators() {
             .then(board => {
                 console.log(board)
                 console.log(board.users)
-                setCollaborators(board.users)
+                const set = new Set();
+                setCollaborators(board.users.filter((user) => {
+                    if (set.has(user.id)) {
+                        return false;
+                    } else {
+                        set.add(user.id);
+                        return true;
+                    }
+                }));
             })
     }, [])
-
-    console.log(collaborators)
 
     function handleClick(newCollaborator) {
         fetch(`http://localhost:9292/user/${cookies.userId}/collaborators`,
