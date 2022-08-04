@@ -2,6 +2,7 @@ import { useEffect, useState, useRef, Fragment } from "react";
 import "./css/Drawings.css"
 import { NavLink } from "react-router-dom"
 import { ReactSketchCanvas } from 'react-sketch-canvas';
+import { useCookies } from 'react-cookie';
 
 
 
@@ -11,6 +12,8 @@ function MyDrawings() {
     const [canvas, setCanvas] = useState([]);
     const [canvasImages, setCanvasImages] = useState([]);
     const canvasesRef = useRef([]);
+
+    const [cookies, setCookie] = useCookies(['name']);
 
     useEffect(() => {
         fetch('http://localhost:9292/all_canvas_boards?' + new URLSearchParams({
@@ -83,11 +86,14 @@ function MyDrawings() {
                             <NavLink exact="true" to={`/canvas/${item.identifier}`} className="nav-buttons">
                                 <button>{item.canvas_name}</button>
                             </NavLink>
+                            {cookies.name && <h1>Hello {cookies.name}!</h1>}
+
+                            <button onClick={(event) => { setCookie('name', 'abc', { path:'/' })}}>Cookies</button>
                         </Fragment>);
                     })
                 }
-            </div> 
-        </div>
+        </div> 
+        </div >
 
     )
 

@@ -29,14 +29,14 @@ function SignUp() {
         }
         fetch("http://localhost:9292/create_user", {
             headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             },
             method: "POST",
             body: JSON.stringify(newUser)
         })
-        .then(res => res.json())
-        .then(data => console.log(data))
+            .then(res => res.json())
+            .then(data => console.log(data))
     }
 
 
@@ -45,12 +45,12 @@ function SignUp() {
         <div className="inner-sign-in">
             <h3>Create an account:</h3>
             <form className="sign-in-form" id="sign-up-form" onSubmit={submitSignUp}>
-                    <input type="text" name="name" placeholder="First Name" onChange={handleFirstName} value={firstName}/>
-                    <input type="text" name="name" placeholder="Last Name" onChange={handleLastName} value={lastName}/>
-                    <input type="text" name="name" placeholder="username" onChange={handleUsername} value={username}/>
-                    <input type="text" name="name" placeholder="email" onChange={handleEmail} value={email}/>
-                    <input type="text" name="name" placeholder="password" onChange={handlePassword} value={password}/>
-                    <input type="submit" name="signin" id="sign-in-submit" value="SIGN UP"/>
+                <input type="text" name="name" placeholder="First Name" onChange={handleFirstName} value={firstName} />
+                <input type="text" name="name" placeholder="Last Name" onChange={handleLastName} value={lastName} />
+                <input type="text" name="name" placeholder="username" onChange={handleUsername} value={username} />
+                <input type="text" name="name" placeholder="email" onChange={handleEmail} value={email} />
+                <input type="text" name="name" placeholder="password" onChange={handlePassword} value={password} />
+                <input type="submit" name="signin" id="sign-in-submit" value="SIGN UP" />
             </form>
 
 
