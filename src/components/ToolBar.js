@@ -4,7 +4,7 @@ import paintBrushLarge from "../icons/paintbrush.png"
 import Eraser from "../icons/eraser.png"
 import { ReactSketchCanvas } from 'react-sketch-canvas';
 
-function ToolBar({strokeColor, setStrokeColor, strokeWidth, setStrokeWidth, eraser, setEraser}) {
+function ToolBar({strokeColor, setStrokeColor, strokeWidth, setStrokeWidth, eraser, setEraser, handlePickerDisplay}) {
 
     const handleClickRed = () => {
         setStrokeColor("red")
@@ -41,8 +41,9 @@ function ToolBar({strokeColor, setStrokeColor, strokeWidth, setStrokeWidth, eras
     const handleClickThin = () => setStrokeWidth(2)
     const handleClickThick = () => setStrokeWidth(5)
     const handleClickEraser = () => {
-        setStrokeColor("white") 
-        setStrokeWidth(12)
+        // setStrokeColor("white") 
+        // setStrokeWidth(12)
+        setEraser(eraser => !eraser)
     }
 
     //stretchgoal- color picker
@@ -55,7 +56,7 @@ function ToolBar({strokeColor, setStrokeColor, strokeWidth, setStrokeWidth, eras
                 <img src={paintBrushLarge} className="brush-buttons" onClick={handleClickThick}></img>
                 <img src={Eraser} className="brush-buttons" onClick={handleClickEraser}></img>
             </div>
-            <div class="vl"></div>
+            <div className="vl"></div>
             <div id="colors">
                 <button className="color-buttons" style={{backgroundColor: "black"}} onClick={handleClickBlack}></button>
                 <button className="color-buttons" style={{backgroundColor: "red"}} onClick={handleClickRed}></button>
@@ -64,6 +65,7 @@ function ToolBar({strokeColor, setStrokeColor, strokeWidth, setStrokeWidth, eras
                 <button className="color-buttons" style={{backgroundColor: "blue"}} onClick={handleClickBlue}></button>
                 <button className="color-buttons" style={{backgroundColor: "pink"}} onClick={handleClickPink}></button>
                 <button className="color-buttons" style={{backgroundColor: "purple"}} onClick={handleClickPurple}></button>
+                <button id="rainbow-button" className="color-buttons" style={{backgroundColor: "purple"}} onClick={handlePickerDisplay}></button>
                 
             </div>
 

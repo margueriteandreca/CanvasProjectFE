@@ -125,3 +125,19 @@ display: none;
 #erase-button:-webkit-details-marker {
 display: none;
 }
+
+ #rainbow-button {
+    background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet, red); 
+    
+ }
+
+
+ #sketch-picker {
+  position: absolute;
+  width: 150px;
+  left: 50vw;
+  bottom: -30px;
+ }
+
+
+ 

@@ -1,7 +1,7 @@
 
 import CollaboratorItem from "./CollaboratorItem"
 import {useState} from "react"
-import "./css/Collab.css";
+import "../css/Collab.css";
 
 // const collaborators = [
 //     {
@@ -26,22 +26,22 @@ function SearchCollab({collaborators, handleClick}) {
 
     const dropDown = filteredCollaborators.map(collab => {
         return (
-            <CollaboratorItem collaborator={collab} handleClick={handleClick}/>
+            <CollaboratorItem key = {collab.id} collaborator={collab} handleClick={handleClick}/>
         )
     })
     
-    function handleOnChange(e){
+    function handleOnChange(e) {
         setSearch(e.target.value)
     }
 
-    return(
+    return (
         <form className="search-bar">
             <div>
                 <div className="search-inputs">
                     <input type="text" id="search" placeholder="add a friend" value={search} onChange={handleOnChange}/>
                 </div>
                 <div className="dropdown-results">
-                    {search === "" ? null: dropDown}
+                    {search === "" ? null : dropDown}
 
                 </div>
             </div>

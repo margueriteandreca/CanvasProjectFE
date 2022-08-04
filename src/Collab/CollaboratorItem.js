@@ -1,4 +1,4 @@
-import "./css/Collab.css";
+import "../css/Collab.css";
 
 function CollaboratorItem({collaborator, handleClick}) {
 

@@ -4,6 +4,15 @@ import './css/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
+import { CookiesProvider } from 'react-cookie';
+
+export default function Root() {
+  return (
+    <CookiesProvider>
+      <App />
+    </CookiesProvider>
+  );
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

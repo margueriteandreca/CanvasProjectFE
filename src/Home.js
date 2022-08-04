@@ -1,7 +1,7 @@
 import "./css/Home.css"
 import React from "react";
 import CanvasComponent from "./components/CanvasComponent";
-import Collaborators from "./Collaborators";
+import Collaborators from "./Collab/Collaborators";
 
 function Home() {
     return (

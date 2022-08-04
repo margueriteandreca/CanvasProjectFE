@@ -8,15 +8,13 @@
     top: 0;
     z-index: 50;
     height: 70px;
-    width: 100vw;
+    width: 100%;
 
 }
 
 /* #title {
     
 } */
-
-
 
 #sign-in-button {
     position: absolute;

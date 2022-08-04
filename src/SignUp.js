@@ -41,10 +41,7 @@ function SignUp({isSignIn, setIsSignIn}) {
             setIsSignIn(true)
         })
 
-
     }
-
-
 
     return (
         <div className="inner-sign-in">

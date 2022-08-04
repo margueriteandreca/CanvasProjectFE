@@ -5,6 +5,7 @@ import {
     useParams
 } from "react-router-dom";
 import ToolBar from "./ToolBar";
+import { SketchPicker } from 'react-color';
 
 const AUTO_UPDATE_TIMER_MS = 1000;
 
@@ -15,12 +16,17 @@ let canvasPointsSet = new Set();
 function CanvasComponent() {
     const [strokeColor, setStrokeColor] = useState("black")
     const [strokeWidth, setStrokeWidth] = useState(5)
-    const [eraser, setEraser] = useState(true)
+    const [eraser, setEraser] = useState(false)
+    const [isPickerDisplayed, setIsPickerDisplayed] = useState(false)
 
 
     let { canvasIdentifier } = useParams(); //this will go to app.js => path="/canvas/:canvasIdentifier" and fetch the canvasIdentifier from the url
 
     const canvasRef = useRef(null); // keep track of the reference to canvas, initially it is null cuz no canvas yet. A new Canvas will auto set the canvasRef because you are setting the ref attribute to canvasRef
+
+    useEffect(() => {
+        canvasRef.current.eraseMode(eraser);
+    }, [eraser])
 
     const fetchCanvas = () => {
         // this function is to fetch the canvas board
@@ -103,6 +109,14 @@ function CanvasComponent() {
         canvasRef.current.clearCanvas() 
     }
 
+    const handleUpdateColor = (color) => {
+        setStrokeColor(color.hex)
+    }
+
+    const handlePickerDisplay = () => {
+        setIsPickerDisplayed(!isPickerDisplayed)
+    }
+
     return (
         <div id="canvas-and-tools">
             <div id="canvas">
@@ -119,12 +133,14 @@ function CanvasComponent() {
                         }
                         } strokeColor={strokeColor} strokeWidth={strokeWidth} />
 
+
             </div>
             
 
             <div id="tools-and-eraser">
             <div>
-                <ToolBar strokeColor={strokeColor} setStrokeColor={setStrokeColor} strokeWidth={strokeWidth} setStrokeWidth={setStrokeWidth} eraser={eraser} setEraser={setEraser}/>
+                <ToolBar strokeColor={strokeColor} setStrokeColor={setStrokeColor} strokeWidth={strokeWidth} setStrokeWidth={setStrokeWidth} eraser={eraser} setEraser={setEraser} handlePickerDisplay={handlePickerDisplay}/>
+                {isPickerDisplayed ? <div id="sketch-picker"><SketchPicker color={strokeColor} onChange={handleUpdateColor} /></div>: null}
             </div>
             <div>
                 <button id="erase-button" onClick={handleClearCanvas}>Clear Canvas</button>

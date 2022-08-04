@@ -1,8 +1,6 @@
 import { useState } from "react";
 import SignUp from "./SignUp";
 import SignIn from "./SignIn";
-
-
 import "./css/Nav.css"
 import "./css/SignIn.css"
 

@@ -1,28 +1,9 @@
 
-import "./css/Collab.css"
+import "../css/Collab.css"
 import CollaboratorItem from "./CollaboratorItem";
 import SearchCollab from "./SearchCollab";
 import { useState, useEffect } from "react";
 
-// const testArray = [
-//     {
-//         name: "Kai",
-//         username: "kai1234",
-//         id: 1
-    
-// },
-//     {
-//     name: "Marg",
-//     username: "Marg1234",
-//     id: 2
-
-// }, 
-//     {
-//     name: "Alan",
-//     username: "Koji420",
-//     id: 3
-
-// }] 
 
 
 function Collaborators() {
