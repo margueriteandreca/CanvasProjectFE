@@ -5,13 +5,10 @@ import {
     useParams
 } from "react-router-dom";
 import ToolBar from "./ToolBar";
-<<<<<<< HEAD
 import { SketchPicker } from 'react-color';
-=======
 import { useCookies } from 'react-cookie';
 import { useNavigate } from "react-router-dom";
 
->>>>>>> 57cd58153c16b8367f006fb5847c64c2b0a61afb
 
 const AUTO_UPDATE_TIMER_MS = 1000;
 
@@ -23,25 +20,19 @@ function CanvasComponent() {
     const [disableCanvas, setDisableCanvas] = useState(false)
     const [strokeColor, setStrokeColor] = useState("black")
     const [strokeWidth, setStrokeWidth] = useState(5)
-<<<<<<< HEAD
     const [eraser, setEraser] = useState(false)
     const [isPickerDisplayed, setIsPickerDisplayed] = useState(false)
 
-=======
     const [canvasName, setCanvasName] = useState('new canvas'); // TODO: have a way to update canvasName
-    const [eraser, setEraser] = useState(true)
     const [cookies, setCookie] = useCookies(['apiToken', 'userId', 'firstName', 'lastName', 'loginToggle']);
->>>>>>> 57cd58153c16b8367f006fb5847c64c2b0a61afb
 
     let { canvasIdentifier } = useParams(); //this will go to app.js => path="/canvas/:canvasIdentifier" and fetch the canvasIdentifier from the url
 
     const canvasRef = useRef(null); // keep track of the reference to canvas, initially it is null cuz no canvas yet. A new Canvas will auto set the canvasRef because you are setting the ref attribute to canvasRef
 
-<<<<<<< HEAD
     useEffect(() => {
         canvasRef.current.eraseMode(eraser);
     }, [eraser])
-=======
     let navigate = useNavigate();
 
     const createBoardAndRedirect = async () => {
@@ -73,7 +64,6 @@ function CanvasComponent() {
         }
         setDisableCanvas(!cookies.apiToken)
     }, [cookies.apiToken]);
->>>>>>> 57cd58153c16b8367f006fb5847c64c2b0a61afb
 
     const fetchCanvas = () => {
         // this function is to fetch the canvas board

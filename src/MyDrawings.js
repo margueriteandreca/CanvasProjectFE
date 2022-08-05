@@ -74,28 +74,33 @@ function MyDrawings() {
                     canvas.map((item, i) => {
                         return (<Fragment key={item.id} >
                             <div style={{
-                                width: "200px",
-                                height: "100px",
+                                width: "250px",
+                                height: "125px",
 
                             }}>
                                 {/* show the image if it exist or else just show the canvas. The canvas will be hidden on the left hand side. */}
-                                {canvasImages[i] ? <img width="200px" height="100px" src={canvasImages[i]} alt="drawing" style={{
-                                    objectFit: "cover"
-                                }} /> : <ReactSketchCanvas ref={el => {
-                                    canvasesRef.current[i] = el
-                                }} style={{
-                                    width: "900px",
-                                    height: "500px",
-                                    pointerEvents: "none",
-                                    position: 'absolute',
-                                    left: -1000000,
-                                }} />
-                                }
+                                <div className="thumbnail-container">
+                                    <div id="image-container">{canvasImages[i] ? <img width="250px" height="125px" src={canvasImages[i]} alt="drawing" style={{
+                                        objectFit: "cover"
+                                    }} /> : <ReactSketchCanvas ref={el => {
+                                        canvasesRef.current[i] = el
+                                    }} style={{
+                                        width: "900px",
+                                        height: "500px",
+                                        pointerEvents: "none",
+                                        position: 'absolute',
+                                        left: -1000000,
+                                    }} />
+                                    }
+                                    </div>
+                                    <div id="canvas-name">
+                                        <NavLink exact="true" to={`/canvas/${item.identifier}`}>
+                                        <p className="drawing-name-button">{item.canvas_name}</p>
+                                        </NavLink>
+                                    </div>
+                                </div>
                                 {/* The added style is to hide the original canvas board.  */}
                             </div>
-                            <NavLink exact="true" to={`/canvas/${item.identifier}`} className="nav-buttons">
-                                <button>{item.canvas_name}</button>
-                            </NavLink>
                         </Fragment>);
                     })
                 }

@@ -1,22 +1,30 @@
 import "../css/Collab.css";
+import { Cookies, useCookies } from "react-cookie";
+import {useParams} from "react-router-dom"
 
-function CollaboratorItem({collaborator, handleClick}) {
+function CollaboratorItem({collaborator, setCollaborators, handleClick}) {
+    const [cookies, setCookie] = useCookies(["apiToken", "userId"]) 
 
     function handleClickCollab() {
         if (handleClick) {
-        handleClick({name: collaborator.name, username: collaborator.username})
-    }
+            handleClick({ id: collaborator.id })
+        }
 }
 
+    let { canvasIdentifier } = useParams();
+ 
     function handleDelete () {
-        fetch(`/canvasboards/${identifier}/users/${collaborator.id}`, { method: 'DELETE' })
+        console.log('Handle Delete: ', canvasIdentifier, collaborator.id);
+        fetch(`http://localhost:9292/canvasboards/${canvasIdentifier}/users/${collaborator.id}`, 
+        {     
+            method: "DELETE" 
+        })
         .then(res => res.json())
-        .then(data => console.log("DELTED ITEM:", data))
+        .then(data => {
+            console.log("DELTED ITEM:", data)
+            setCollaborators(data.users)
+        }).catch(e => console.log('Error: ', e))
     }
-
-console.log(collaborator)
-
-console.log(collaborator.first_name, collaborator.username)
     
     return (
         <div id="collaborator-whole">

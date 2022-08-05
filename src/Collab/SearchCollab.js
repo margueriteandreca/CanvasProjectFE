@@ -1,32 +1,36 @@
 
 import CollaboratorItem from "./CollaboratorItem"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "../css/Collab.css";
+import { Cookies, useCookies } from "react-cookie";
 
-// const collaborators = [
-//     {
-//         name: "Koji",
-//         username: "Kojirules"
-
-// },
-// {
-//     name: "Chett",
-//     username: "Brewchetta"
-// }
-// ]
 
 function SearchCollab({ collaborators, handleClick }) {
-    console.log(collaborators)
 
     const [search, setSearch] = useState("")
+    const [users, setUsers] = useState([])
+    const [cookies, setCookie] = useCookies(["apiToken"])
 
-    const filteredCollaborators = collaborators.filter(collab => collab.first_name ? collab.first_name.toLowerCase().includes(search.toLowerCase()) : false).slice(0, 5)
+    useEffect(() => {
+        fetch(`http://localhost:9292/users`)
+        .then(res => res.json())
+        .then(data => {
+            const users = data.filter(item => item.api_token != cookies.apiToken) 
+            setUsers(users)
+        })
 
+    }, [])
+
+    const filteredUsers = users.filter(user => user.first_name ? user.first_name.toLowerCase().includes(search.toLowerCase()) : false).slice(0, 5)
+
+
+    // filteredUsers - minus myself and current collaborators - cookies userId / if userId === fetch user.id -> ignore 
+    // loop through collaborators array and ignore all the userscollaborator with the same id as userId
     // console.log(filteredCollaborators)
 
-    const dropDown = filteredCollaborators.map(collab => {
+    const dropDown = filteredUsers.map(user => {
         return (
-            <CollaboratorItem key={collab.id} collaborator={collab} handleClick={handleClick} />
+            <CollaboratorItem key={user.id} collaborator={user} handleClick={handleClick} />
         )
     })
 

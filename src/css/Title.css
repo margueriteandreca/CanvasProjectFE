@@ -12,9 +12,14 @@
 
 }
 
-/* #title {
-    
-} */
+#welcome-back {
+  position: absolute;
+  bottom: -30px;
+  font-weight: 500;
+
+
+
+}
 
 #sign-in-button {
     position: absolute;

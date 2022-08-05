@@ -149,3 +149,9 @@
     transition: .2s;
     cursor: pointer;
 }
+
+.main-container.blur {
+  filter: blur(5px);
+
+
+}

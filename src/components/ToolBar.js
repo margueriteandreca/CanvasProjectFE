@@ -65,7 +65,7 @@ function ToolBar({strokeColor, setStrokeColor, strokeWidth, setStrokeWidth, eras
                 <button className="color-buttons" style={{backgroundColor: "blue"}} onClick={handleClickBlue}></button>
                 <button className="color-buttons" style={{backgroundColor: "pink"}} onClick={handleClickPink}></button>
                 <button className="color-buttons" style={{backgroundColor: "purple"}} onClick={handleClickPurple}></button>
-                <button id="rainbow-button" className="color-buttons" style={{backgroundColor: "purple"}} onClick={handlePickerDisplay}></button>
+                <button id="rainbow-button" className="color-buttons" onClick={handlePickerDisplay}></button>
                 
             </div>
 

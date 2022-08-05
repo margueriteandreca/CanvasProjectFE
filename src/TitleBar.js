@@ -29,8 +29,8 @@ function TitleBar() {
                 ? <button id="sign-in-button" onClick={handleLogout}>Sign Out</button>
                 : <button id="sign-in-button" onClick={handleSignInDisplayClick}>Sign In</button>}
             {isDisplayed ? <SignInOrUp isDisplayed={isDisplayed} setIsDisplayed={setIsDisplayed} /> : null}
-            <div>
-            {cookies.apiToken? `Welcome back ${cookies.lastName} ${cookies.firstName}`: null}
+            <div id="welcome-back">
+            {cookies.apiToken? `Welcome back, ${cookies.firstName} ${cookies.lastName}`: null}
             </div>
 
 
