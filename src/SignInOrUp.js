@@ -20,7 +20,9 @@ function SignInOrUp({ isDisplayed, setIsDisplayed }) {
 
 
     return (
+        <>
         <div id="sign-in-container">
+        
 
             <button id="close-button" onClick={handleClickClose}>✕</button>
             {isSignIn
@@ -29,6 +31,7 @@ function SignInOrUp({ isDisplayed, setIsDisplayed }) {
 
 
         </div>
+        </>
     )
 
 }

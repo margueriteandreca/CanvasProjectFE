@@ -47,10 +47,10 @@ function SignUp({ isSignIn, setIsSignIn }) {
 
     return (
         <div className="inner-sign-in">
-            <h3>Create an account:</h3>
+            <h3 id="create-account">Create an account:</h3>
             <form className="sign-in-form" id="sign-up-form" onSubmit={submitSignUp}>
-                <input type="text" name="name" placeholder="First Name" onChange={handleFirstName} value={firstName} />
-                <input type="text" name="name" placeholder="Last Name" onChange={handleLastName} value={lastName} />
+                <div id="names"><input type="text" name="name" placeholder="First Name" onChange={handleFirstName} value={firstName} />
+                <input type="text" name="name" placeholder="Last Name" onChange={handleLastName} value={lastName} /></div>
                 <input type="text" name="name" placeholder="username" onChange={handleUsername} value={username} />
                 <input type="text" name="name" placeholder="email" onChange={handleEmail} value={email} />
                 <input type="password" name="name" placeholder="password" onChange={handlePassword} value={password} />

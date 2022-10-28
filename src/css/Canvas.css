@@ -1,4 +1,9 @@
 
+#canvas {
+  border-radius: 1px;
+  border-color: rgb(199, 199, 199);
+  border-style: solid;
+}
 
 #canvas-and-tools {
   display: flex;
@@ -8,13 +13,13 @@
 }
 
 #tools-and-eraser {
-  width: 90%;
+  width: 70%;
   margin-top: 30px;
-  /* background-color: aqua; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  z-index: 5;
 }
 
 #tool-bar-div {

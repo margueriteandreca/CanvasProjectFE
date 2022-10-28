@@ -5,6 +5,7 @@ import {
     useParams
 } from "react-router-dom";
 import ToolBar from "./ToolBar";
+import CanvasTitle from "./CanvasTitle";
 import { SketchPicker } from 'react-color';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from "react-router-dom";
@@ -23,7 +24,7 @@ function CanvasComponent() {
     const [eraser, setEraser] = useState(false)
     const [isPickerDisplayed, setIsPickerDisplayed] = useState(false)
 
-    const [canvasName, setCanvasName] = useState('new canvas'); // TODO: have a way to update canvasName
+    
     const [cookies, setCookie] = useCookies(['apiToken', 'userId', 'firstName', 'lastName', 'loginToggle']);
 
     let { canvasIdentifier } = useParams(); //this will go to app.js => path="/canvas/:canvasIdentifier" and fetch the canvasIdentifier from the url

@@ -135,7 +135,7 @@
 }
 .dark-light:checked ~ .sec-center .for-dropdown{
   background-color: #102770;
-  color: orange;
+  color: white;
   box-shadow: 0 12px 35px 0 rgba(16,39,112,.25);
 }
 .dropdown:checked + label:before,
@@ -181,7 +181,7 @@
   transition: all 200ms linear;
 }
 .dark-light:checked ~ .sec-center .section-dropdown {
-  background-color: #fff;
+  background-color: black;
   box-shadow: 0 14px 35px 0 rgba(9,9,12,0.15);
 }
 .dropdown:checked ~ .section-dropdown{
@@ -248,7 +248,7 @@ a {
   background-color: #ffeba7;
 } */
 .dark-light:checked ~ .sec-center .section-dropdown a:hover {
-  color: orange;
+  color: white;
   background-color: #102770;
 }
 a .uil {
@@ -292,13 +292,13 @@ a .uil {
 .dropdown-sub:checked + label:hover,
 .dropdown-sub:not(:checked) + label:hover{
   color: #102770;
-  background-color: orange;
+  background-color: white;
 }
 .dark-light:checked ~ .sec-center .section-dropdown .for-dropdown-sub{
   color: #102770;
 }
 .dark-light:checked ~ .sec-center .section-dropdown .for-dropdown-sub:hover{
-  color: orange;
+  color: white;
   background-color: #102770;
 }
 

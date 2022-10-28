@@ -23,6 +23,7 @@ function TitleBar() {
 
     return (
         <div id="title-div">
+        {isDisplayed ? <div id="pop-up-background"></div> : null}
 
             <h2 id="title" style={{ color: "whitesmoke" }}>DrawTogether</h2>
             {cookies.apiToken

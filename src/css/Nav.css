@@ -6,7 +6,7 @@
     align-items: center;
     position: absolute;
     left: 0;
-    z-index: 50;
+    z-index: 1;
     flex-direction: column;
     height: 100vh;
     background-color: white;

@@ -1,9 +1,9 @@
-.main-container {
+#home-container{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    /* align-items: center; */
-    background-color: whitesmoke;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
     height: 100vh;
     width: calc(100vw - 70px);
     margin-left: 70px;
@@ -23,8 +23,8 @@
 
 #collab-div {
     display: flex;
-    margin-top: 8%;
-    margin-left: 6%;
+    margin-top: 20%;
+    margin-left: 30%;
     justify-self: flex-end;
     align-self: flex-start;
     width: 200px;
@@ -32,10 +32,50 @@
     background-color: blueviolet;
 }
 
-.vl {
+/* .vl {
     border-left: 1px solid rgb(138, 138, 138);
     height: 40px;
     align-self: center;
   }
- 
+  */
 
+#canvas-title-div {
+    display: flex;
+    flex-direction: column;
+    /* margin-top: -20%; */
+    margin-left: 30%;
+    justify-self: flex-end;
+    align-self: flex-start;
+    width: 200px;
+    height: 50px;
+    background-color: whitesmoke;
+}
+
+#title-and-collab-div {
+    /* justify-self: flex-end; */
+    border-radius: 10px;
+    margin-left: 20px;
+    background-color: whitesmoke;
+    height: 500px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+}
+
+#canvas-change-name {
+    margin-top: 15px;
+}
+
+#canvas-change-name input{
+    height: 40px;
+    width: 170px;
+    border-radius: 3px;
+    border-style: solid;
+    border-color: grey;
+}
+
+#title-only {
+    font-size: larger;
+    font-weight: 500;
+    text-transform: capitalize;
+}
