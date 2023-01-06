@@ -31,7 +31,7 @@ function TitleBar() {
                 : <button id="sign-in-button" onClick={handleSignInDisplayClick}>Sign In</button>}
             {isDisplayed ? <SignInOrUp isDisplayed={isDisplayed} setIsDisplayed={setIsDisplayed} /> : null}
             <div id="welcome-back">
-            {cookies.apiToken? `Welcome back, ${cookies.firstName} ${cookies.lastName}`: null}
+            {cookies.apiToken? `Welcome back, ${cookies.firstName} ${cookies.lastName}`: "Please sign in to start drawing!"}
             </div>
 
 

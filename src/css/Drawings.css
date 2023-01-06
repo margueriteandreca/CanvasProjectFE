@@ -4,6 +4,11 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    /* background-color: red; */
+    height: 100vh;
+    width: calc(100vw - 70px);
+    margin-left: 70px;
+    margin-top: 70px;
 }
 
 

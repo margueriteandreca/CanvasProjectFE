@@ -1,6 +1,4 @@
-body {
-  font-family: 'Inter', sans-serif;
-}
+
 
 #title-div {
     background-color: rgb(38, 81, 255);
@@ -13,6 +11,7 @@ body {
     z-index: 50;
     height: 70px;
     width: 100%;
+    font-family: 'Inter', sans-serif;
 
 }
 

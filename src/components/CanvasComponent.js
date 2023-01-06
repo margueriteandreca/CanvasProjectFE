@@ -159,6 +159,8 @@ function CanvasComponent() {
         setIsPickerDisplayed(!isPickerDisplayed)
     }
 
+    console.log("!!!", disableCanvas)
+
     return (
         <div id="canvas-and-tools">
             <div id="canvas">
